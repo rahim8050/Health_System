@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'health.apps.HealthConfig',
     'users.apps.UsersConfig',
+    'crispy_forms',
+    'widget_tweaks',
+    'allauth',
 ]
 
 MIDDLEWARE = [
