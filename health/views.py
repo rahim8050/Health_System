@@ -88,4 +88,4 @@ def profile(request):
     return render(request, 'users/accounts/profile.html', {
         'enrollments': enrollments
     })
-
+pass
