@@ -23,10 +23,10 @@ from health import views
 
 urlpatterns = [
     path('',views.index,name="index"),
-    path('program/<int:id>/<slug:slug>/', views.program_list, name='program_list'),
+    path('health/', include('health.urls')),
     path('admin/', admin.site.urls),
 
     path('users/', include("users.urls")),
 
 
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
