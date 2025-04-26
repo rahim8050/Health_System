@@ -3,38 +3,47 @@
 <nav class="bg-blue-600 text-white shadow-lg">
     <div class="max-w-7xl mx-auto px-4">
         <div class="flex justify-between items-center h-16">
-            <!-- Logo -->
+            <!-- Logo Section -->
             <div class="flex items-center">
-    <span class="text-2xl font-bold">HealthSystem</span>
-    <img src="{% static 'images/health.jpg' %}" class="h-8 w-8 ml-2" alt="Health Icon">
-</div>
-        <div>
-            <a href="{% url 'profile' %}">Profile</a>
-        </div>
+                <a href="/" class="flex items-center hover:text-blue-200 transition-colors duration-300">
+                    <img src="{% static 'images/health.jpg' %}" class="h-8 w-8 rounded-full object-cover" alt="Health Icon">
+                    <span class="text-2xl font-bold ml-3">HealthSystem</span>
+                </a>
+            </div>
 
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center space-x-6">
-                <!-- Auth Section -->
-                <div class="flex items-center gap-4">
-                    {% if user.is_authenticated %}
-                        <span class="text-blue-200 px-3">Welcome, {{ user.username }}</span>
-                        <form method="post" action="{% url 'logout' %}">
-                            {% csrf_token %}
-                            <button class="text-white hover:text-blue-200 transition-colors duration-300 py-2 px-4 rounded hover:bg-blue-700/20"
-                                    type="submit">
-                                Logout
-                            </button>
-                        </form>
-                    {% else %}
-                        <a href="{% url 'login' %}"
-                           class="text-white hover:text-blue-200 transition-colors duration-300 py-2 px-4 rounded hover:bg-blue-700/20">
-                            Login
-                        </a>
-                        <a href="{% url 'register'%}"
-                           class="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition-colors duration-300">
-                            Create Account
-                        </a>
-                    {% endif %}
+            <!-- Navigation Links -->
+            <div class="flex items-center gap-6">
+                <!-- Mobile Profile Link -->
+                <div class="md:hidden">
+                    <a href="{% url 'profile' %}" class="hover:text-blue-200 transition-colors duration-300">
+                        Profile
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-6">
+                    <!-- Auth Section -->
+                    <div class="flex items-center gap-4">
+                        {% if user.is_authenticated %}
+                            <span class="text-blue-200 px-3">Welcome, {{ user.username }}</span>
+                            <form method="post" action="{% url 'logout' %}">
+                                {% csrf_token %}
+                                <button class="text-white hover:text-blue-200 transition-colors duration-300 py-2 px-4 rounded hover:bg-blue-700/20"
+                                        type="submit">
+                                    Logout
+                                </button>
+                            </form>
+                        {% else %}
+                            <a href="{% url 'login' %}"
+                               class="text-white hover:text-blue-200 transition-colors duration-300 py-2 px-4 rounded hover:bg-blue-700/20">
+                                Login
+                            </a>
+                            <a href="{% url 'register'%}"
+                               class="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition-colors duration-300">
+                                Create Account
+                            </a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>

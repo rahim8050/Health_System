@@ -22,7 +22,8 @@ from Health_system import settings
 from health import views
 
 urlpatterns = [
-   path('',views.index,name="index"),
+    path('',views.index,name="index"),
+    path('program/<int:id>/<slug:slug>/', views.program_list, name='program_list'),
     path('admin/', admin.site.urls),
 
     path('users/', include("users.urls")),
