@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container mx-auto px-4 py-8">
     <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg">
-        <!-- Image Container (Always Visible) -->
+        <!-- Image Container -->
         <div class="w-full h-64 bg-gray-100 rounded-t-lg flex items-center justify-center">
             {% if program.image %}
                 <img src="{{ program.image.url }}"
@@ -21,6 +21,7 @@
         </div>
 
         <div class="p-8">
+            <!-- Program Details -->
             <h1 class="text-3xl font-bold text-gray-800 mb-4">
                 {{ program.name }}
             </h1>
@@ -29,14 +30,26 @@
                 {{ program.description|linebreaks }}
             </div>
 
-            <div class="flex justify-between items-center text-sm text-gray-500">
-                <div>
-                    <p>Created: {{ program.created|date:"M d, Y" }}</p>
-                    <p>Last updated: {{ program.updated|date:"M d, Y" }}</p>
+            <!-- Enrollment Form -->
+            <form method="post" action="{% url 'health:enroll' program.id program.slug %}">
+                {% csrf_token %}
+                <button type="submit"
+                        class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">
+                    Enroll Now
+                </button>
+            </form>
+
+            <!-- Program Metadata -->
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <div class="flex justify-between items-center text-sm text-gray-500">
+                    <div>
+                        <p>Created: {{ program.created|date:"M d, Y" }}</p>
+                        <p>Last updated: {{ program.updated|date:"M d, Y" }}</p>
+                    </div>
+                    <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800">
+                        {{ program.category.name }}
+                    </span>
                 </div>
-                <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800">
-                    {{ program.category.name }}
-                </span>
             </div>
         </div>
     </div>

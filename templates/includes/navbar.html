@@ -5,17 +5,17 @@
         <div class="flex justify-between items-center h-16">
             <!-- Logo Section -->
             <div class="flex items-center">
-                <a href="/" class="flex items-center hover:text-blue-200 transition-colors duration-300">
+                <a href="{% url 'health:program_list' %}" class="flex items-center hover:text-blue-200 transition-colors duration-300">
                     <img src="{% static 'images/health.jpg' %}" class="h-8 w-8 rounded-full object-cover" alt="Health Icon">
                     <span class="text-2xl font-bold ml-3">HealthSystem</span>
                 </a>
             </div>
 
-            <!-- Navigation Links -->
-            <div class="flex items-center gap-6">
-                <!-- Mobile Profile Link -->
-                <div class="md:hidden">
-                    <a href="{% url 'profile' %}" class="hover:text-blue-200 transition-colors duration-300">
+         <div class="flex items-center gap-6">
+                <!-- Desktop Profile Link -->
+                <div class="hidden md:block">
+                    <a href="{% url 'profile' %}"
+                       class="hover:text-blue-200 transition-colors duration-300 py-2 px-4">
                         Profile
                     </a>
                 </div>

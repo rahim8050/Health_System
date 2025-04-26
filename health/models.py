@@ -1,3 +1,5 @@
+from django.contrib.auth.models import User
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 
@@ -26,3 +28,19 @@ class Program(models.Model):
 
     def get_absolute_url(self):
         return reverse("health:detail", kwargs={"id": self.id, "slug": self.slug})
+
+
+
+
+class Enrollment(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='enrollments'  # Add this
+    )
+    program = models.ForeignKey(
+        'Program',
+        on_delete=models.CASCADE,
+        related_name='enrollments'
+    )
+    enrolled_at = models.DateTimeField(auto_now_add=True)
