@@ -26,7 +26,7 @@ urlpatterns = [
     # path('health/', include('health.urls')),
     path('admin/', admin.site.urls),
     path('', include('health.urls', namespace='health')),
-    # path('',views.program_list,name="index"),
+    path('',views.program_list,name="index"),
     path('programs/', views.program_list_by_category, name='product_list_by_category'),
     path('programs/<slug:category_slug>/', views.program_list_by_category, name='program_list_by_category'),
     path('program/<int:id>/<slug:slug>/', views.program_detail, name='program_detail'),
